@@ -1,14 +1,14 @@
 <?php
 
 
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use Laravel\Fortify\Features;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/greeting', function () {
     return 'Hello World';
 });
 
 
-Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/performance-test', [UserController::class, 'performanceTest']);
+Route::get('/user/print-users', [UserController::class, 'printUsers']);
+

@@ -43,14 +43,17 @@ services:
     build: ./php
     container_name: app-php
     working_dir: /var/www/html
+    user: "${UID:-1000}:${GID:-1000}"
     volumes:
       - ../:/var/www/html
+      - ./php/php.ini:/usr/local/etc/php/conf.d/zz-custom.ini:ro
     # Optional: install extensions your project may need
     # (uncomment and adjust as needed)
     # command: >
     #   sh -c "docker-php-ext-install pdo pdo_mysql && php-fpm"
   composer:
     image: composer:2
+    container_name: app-composer
     working_dir: /var/www/html
     volumes:
       - ../:/var/www/html
